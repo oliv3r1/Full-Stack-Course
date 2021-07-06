@@ -1,0 +1,7 @@
+#NodeJS Module ignored files
+node_modules
+build
+npm-debug.log
+.nyc
+.env
+.DS_Store
