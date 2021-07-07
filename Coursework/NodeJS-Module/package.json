@@ -1,17 +1,18 @@
 {
-  "name": "nodejs-module",
-  "version": "1.0.0",
-  "description": "Full-stack course - NodeJS Module",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Akseli Aula",
-  "license": "ISC",
-  "dependencies": {
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.9"
-  }
+	"name": "nodejs-module",
+	"version": "1.0.0",
+	"description": "Full-stack course - NodeJS Module",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index",
+		"dev": "nodemon index"
+	},
+	"author": "Akseli Aula",
+	"license": "ISC",
+	"dependencies": {
+		"uuid": "^8.3.2"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.9"
+	}
 }
