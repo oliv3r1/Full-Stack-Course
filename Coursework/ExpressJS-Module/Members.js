@@ -12,13 +12,13 @@ const members = [
 		status: 'active',
 	},
 	{
-		id: 1,
-		name: 'John Doe',
-		email: 'JohnDoe@email.com',
+		id: 3,
+		name: 'Doe Doe',
+		email: 'DoeDoe@email.com',
 		status: 'inactive',
 	},
 	{
-		id: 3,
+		id: 4,
 		name: 'Lisa Doe',
 		email: 'LisaDoe@email.com',
 		status: 'active',
