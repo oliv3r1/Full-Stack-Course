@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 const config = require('./config/database');
 
 //Connect to the database and check the connection
-mongoose.connect(config.database);
+mongoose.connect(config.database, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
 mongoose.connection.on('connected', () => {
 	console.log(`Connected to the database: ${config.database}`);
 });
@@ -23,6 +26,10 @@ const port = 3000;
 //Middleware
 app.use(cors());
 app.use(express.json()); //Body-parser is builtin on express v.4.16->
+app.use(passport.initialize());
+app.use(passport.session());
+
+require('./config/passport')(passport);
 
 app.use('/users', users);
 
