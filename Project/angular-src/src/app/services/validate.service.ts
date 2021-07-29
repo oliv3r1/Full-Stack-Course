@@ -24,6 +24,12 @@ export class ValidateService {
     return re.test(String(email).toLowerCase());
   }
 
-  //TODO: Checks that password meets the minimum requirements
-  validatePassword(password) {}
+  //Checks that password meets the minimum requirements:
+  //length > 8, uppercase letter, lowercase letter, number and special character
+  //regex from https://stackoverflow.com/a/60028806
+  validatePassword(password) {
+    const re =
+      /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
+    return re.test(String(password));
+  }
 }

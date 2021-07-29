@@ -15,6 +15,8 @@ export class RegisterComponent implements OnInit {
   email: String;
   password: String;
 
+  show: boolean = false;
+
   constructor(
     private validateService: ValidateService,
     private flashMessage: FlashMessagesService,
@@ -50,7 +52,17 @@ export class RegisterComponent implements OnInit {
       return false;
     }
 
-    //TODO: Validate password
+    //Validate password
+    if (!this.validateService.validatePassword(user.password)) {
+      this.flashMessage.show(
+        "The password must contain at least the following: 8 letters, uppercase letter, lowercase letter, number and a special character.",
+        {
+          cssClass: "alert-danger",
+          timeout: 6000,
+        }
+      );
+      return false;
+    }
 
     //Register user and redirect if success
     this.authService.registerUser(user).subscribe((data) => {
@@ -68,5 +80,11 @@ export class RegisterComponent implements OnInit {
         this.router.navigate(["/register"]);
       }
     });
+  }
+
+  //Toggle between hidden/visible password
+  //Source: https://stackoverflow.com/a/50438084
+  passwordVisibility() {
+    this.show = !this.show;
   }
 }
