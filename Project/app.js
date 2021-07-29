@@ -9,6 +9,8 @@ const config = require('./config/database');
 mongoose.connect(config.database, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useCreateIndex: true,
+	autoIndex: true,
 });
 mongoose.connection.on('connected', () => {
 	console.log(`Connected to the database: ${config.database}`);
@@ -20,6 +22,7 @@ mongoose.connection.on('error', (err) => {
 const app = express();
 
 const users = require('./routes/users');
+const notes = require('./routes/notes');
 
 const port = process.env.PORT || 8080;
 
@@ -32,6 +35,7 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 app.use('/users', users);
+app.use('/notes', notes);
 
 //Set static folder
 app.use(express.static(path.join(__dirname, 'public')));
