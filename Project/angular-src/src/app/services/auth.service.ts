@@ -15,7 +15,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     return this.http
-      .post("/users/register", user, {
+      .post("http://localhost:8080/users/register", user, {
         headers: headers,
       })
       .map((res) => res.json());
@@ -26,7 +26,7 @@ export class AuthService {
     let headers = new Headers();
     headers.append("Content-Type", "application/json");
     return this.http
-      .post("/users/authenticate", user, {
+      .post("http://localhost:8080/users/authenticate", user, {
         headers: headers,
       })
       .map((res) => res.json());
@@ -39,7 +39,7 @@ export class AuthService {
     headers.append("Content-Type", "application/json");
 
     return this.http
-      .get("/users/profile", { headers: headers })
+      .get("http://localhost:8080/users/profile", { headers: headers })
       .map((res) => res.json());
   }
 
