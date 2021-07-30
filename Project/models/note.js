@@ -3,8 +3,8 @@ const config = require('../config/database');
 
 //note schema
 const NoteSchema = mongoose.Schema({
-	//creator equals username
-	creator: {
+	//creator
+	username: {
 		type: String,
 		required: true,
 	},
@@ -22,8 +22,8 @@ const NoteSchema = mongoose.Schema({
 const Note = (module.exports = mongoose.model('Note', NoteSchema));
 
 //Query notes made by the user
-module.exports.getNotesByUsername = function (creator, callback) {
-	const query = { creator: creator };
+module.exports.getNotesByUsername = function (username, callback) {
+	const query = { username: username };
 	Note.find(query, callback);
 };
 

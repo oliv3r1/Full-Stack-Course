@@ -1,6 +1,27 @@
-<h2 class="page-header">Dashboard</h2>
-
 <div>
-  <a>My notes</a>
-  <button class="btn btn-primary">Add a new note</button>
+  <h2 class="page-header">My notes</h2>
+
+  <form (submit)="createNote()">
+    <div class="form-group">
+      <label>Create a new note</label>
+      <textarea
+        name="content"
+        [(ngModel)]="content"
+        rows="3"
+        class="form-control"
+      ></textarea>
+    </div>
+    <div>
+      <input type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+  </form>
+
+  <ul class="notes">
+    <li *ngFor="let note of notes">
+      <span class="note"> {{ note.note }} </span>
+      <button class="delete" title="Delete note" (click)="deleteNote(note)">
+        X
+      </button>
+    </li>
+  </ul>
 </div>

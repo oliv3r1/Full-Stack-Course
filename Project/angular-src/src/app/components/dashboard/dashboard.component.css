@@ -1,0 +1,25 @@
+.notes {
+  margin-top: 30px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.notes li {
+  position: relative;
+  background-color: rgb(155, 148, 148);
+  margin: 8px;
+  color: black;
+  padding: 0.3em 0;
+  padding-left: 0.5em;
+  border-radius: 4px;
+}
+
+.form-control {
+  resize: vertical;
+}
+
+.delete {
+  float: right;
+  font-size: x-small;
+  border-radius: 35%;
+}

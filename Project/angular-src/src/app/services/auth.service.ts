@@ -7,7 +7,6 @@ import { tokenNotExpired } from "angular2-jwt";
 export class AuthService {
   authToken: any;
   user: any;
-
   constructor(private http: Http) {}
 
   //Reach back-end to register
@@ -40,6 +39,26 @@ export class AuthService {
 
     return this.http
       .get("http://localhost:8080/users/profile", { headers: headers })
+      .map((res) => res.json());
+  }
+
+  getNotes(user) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    return this.http
+      .post("http://localhost:8080/notes/fetch", user, { headers: headers })
+      .map((res) => res.json());
+  }
+
+  postNote(note) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    return this.http
+      .post("http://localhost:8080/notes/post", note, {
+        headers: headers,
+      })
       .map((res) => res.json());
   }
 

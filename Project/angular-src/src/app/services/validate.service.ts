@@ -32,4 +32,13 @@ export class ValidateService {
       /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
     return re.test(String(password));
   }
+
+  //Validate that note has content
+  checkContent(content) {
+    if (content == undefined || content.trim().length == 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }

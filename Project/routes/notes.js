@@ -9,7 +9,7 @@ const config = require('../config/database');
 //Create a note
 router.post('/post', (req, res, next) => {
 	let newNote = new Note({
-		creator: req.body.creator,
+		username: req.body.username,
 		date: req.body.date,
 		note: req.body.note,
 	});
@@ -23,16 +23,15 @@ router.post('/post', (req, res, next) => {
 	});
 });
 
-//Get user notes
-router.get('/fetch', (req, res, next) => {
-	const creator = req.body.creator;
-
-	Note.getNotesByUsername(creator, (err, note) => {
+//Get an array of user notes
+router.post('/fetch', (req, res, next) => {
+	const username = req.body.username;
+	Note.getNotesByUsername(username, (err, note) => {
 		if (err) throw err;
 		if (!note) {
 			return res.json({ success: false, msg: `Notes not found:${err}` });
 		} else {
-			return res.json({ succes: true, msg: `Notes: ${note}` });
+			return res.json({ succes: true, notes: note });
 		}
 	});
 });
