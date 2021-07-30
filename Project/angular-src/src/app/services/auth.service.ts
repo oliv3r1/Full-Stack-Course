@@ -62,6 +62,20 @@ export class AuthService {
       .map((res) => res.json());
   }
 
+  //Source for sending request body:
+  //https://stackoverflow.com/a/40857437
+  deleteNote(noteId) {
+    let headers = new Headers();
+    headers.append("Content-Type", "application/json");
+
+    return this.http
+      .delete("http://localhost:8080/notes/del", {
+        headers: headers,
+        body: { _id: noteId },
+      })
+      .map((res) => res.json());
+  }
+
   storeUserData(token, user) {
     localStorage.setItem("id_token", token);
     localStorage.setItem("user", JSON.stringify(user));

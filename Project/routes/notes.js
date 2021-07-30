@@ -36,4 +36,15 @@ router.post('/fetch', (req, res, next) => {
 	});
 });
 
+router.delete('/del', (req, res) => {
+	const noteId = req.body._id;
+	Note.deleteNote(noteId, (err) => {
+		if (err) {
+			return res.json({ success: false, msg: err });
+		} else {
+			return res.json({ success: true, msg: `Deleted note: ${noteId}` });
+		}
+	});
+});
+
 module.exports = router;

@@ -21,5 +21,6 @@
 .delete {
   float: right;
   font-size: x-small;
+  margin-right: 00.5em;
   border-radius: 35%;
 }

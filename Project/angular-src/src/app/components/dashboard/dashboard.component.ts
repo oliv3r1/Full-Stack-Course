@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
     this.authService.getNotes(this.user).subscribe((content) => {
       this.notes = content.notes;
-      console.log(this.notes);
     });
   }
 
@@ -39,8 +38,6 @@ export class DashboardComponent implements OnInit {
 
     //Check input validity
     if (this.validateService.checkContent(this.content)) {
-      console.log(newNote);
-
       this.authService.postNote(newNote).subscribe((data) => {
         if (data.success) {
           this.flashMessage.show("Note created!", {
@@ -60,9 +57,21 @@ export class DashboardComponent implements OnInit {
 
   //Delete clicked note from the database and refresh page
   deleteNote(note) {
-    console.log(note._id);
+    const noteId = note._id;
+    this.authService.deleteNote(noteId).subscribe((data) => {
+      if (data.success) {
+        this.flashMessage.show(data.msg, {
+          cssClass: "alert-success",
+          timeout: 3000,
+        });
 
-    //on success
-    window.location.reload();
+        window.location.reload(); //reload current page
+      } else {
+        this.flashMessage.show(data.msg, {
+          cssClass: "alert-danger",
+          timeout: 3000,
+        });
+      }
+    });
   }
 }

@@ -31,3 +31,9 @@ module.exports.getNotesByUsername = function (username, callback) {
 module.exports.addNote = function (newNote, callback) {
 	newNote.save(callback);
 };
+
+//Delete a note based on its id
+//Source: https://www.geeksforgeeks.org/mongoose-findbyidandremove-function/
+module.exports.deleteNote = function (noteId, callback) {
+	Note.findByIdAndDelete(noteId, callback);
+};
