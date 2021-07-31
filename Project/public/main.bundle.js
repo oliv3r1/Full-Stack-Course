@@ -458,6 +458,7 @@ var NavbarComponent = (function () {
         this.router = router;
     }
     NavbarComponent.prototype.ngOnInit = function () { };
+    //Log out and remove user and token data from localStorage
     NavbarComponent.prototype.onLogoutClick = function () {
         this.authService.logout();
         this.flashMessage.show("Logged out", {
@@ -507,6 +508,7 @@ var ProfileComponent = (function () {
         this.authService = authService;
         this.router = router;
     }
+    //Load User to display its information on the page when page is loaded
     ProfileComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.authService.getProfile().subscribe(function (profile) {

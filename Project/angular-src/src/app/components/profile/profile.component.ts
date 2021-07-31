@@ -12,6 +12,7 @@ export class ProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router) {}
 
+  //Load User to display its information on the page when page is loaded
   ngOnInit() {
     this.authService.getProfile().subscribe(
       (profile) => {

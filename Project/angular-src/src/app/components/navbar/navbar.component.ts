@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {}
 
+  //Log out and remove user and token data from localStorage
   onLogoutClick() {
     this.authService.logout();
     this.flashMessage.show("Logged out", {
