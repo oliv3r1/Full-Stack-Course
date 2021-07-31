@@ -1,8 +1,12 @@
 <div class="jumbotron text-center">
   <h1>My Notes App</h1>
   <p class="lead">Welcome to the ultimate notes application</p>
-  <p style="padding-top: 10%">
-    Login or create an account to start making your notes right away!
+  <p *ngIf="!authService.loggedIn()" style="padding-top: 10%">
+    Login or create an account to start making notes right away!
+  </p>
+  <p *ngIf="authService.loggedIn()" style="padding-top: 10%">
+    Head over to your <a [routerLink]="['/dashboard']">dashboard</a> to start
+    making notes right away!
   </p>
   <div>
     <a
